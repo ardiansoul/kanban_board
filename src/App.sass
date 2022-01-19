@@ -1,0 +1,140 @@
+@use 'base'
+
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    font-family: base.$primary-font
+
+.container
+    width: 100vw
+    height: 100vh
+    display: flex
+    flex-direction: column
+
+    .content_wrapper
+        width: 100%
+        height: 80%
+        padding: 2em
+        border: 1px solid black
+        display: flex
+        justify-content: space-evenly
+
+    .navbar
+        width: 100%
+        height: 20%
+        display: flex
+        justify-content: center
+        align-items: center
+
+        .title
+            font-size: 2em
+
+.board
+    &__wrapper
+        width: 100%
+        height: 100%
+        padding: 0.5em
+
+    &__nav
+        width: 100%
+        height: 20%
+        display: flex
+        flex-direction: column
+        justify-content: space-evenly
+        &__header
+            width: 100%
+            height: 40%
+            display: flex
+            justify-content: space-between
+            align-items: center
+        &__new
+            width: 100%
+            height: 40%
+            display: flex
+            justify-content: space-between
+            align-items: center
+        &__input
+            width: 70%
+            height: 100%
+            border: 1px solid base.$primary-color
+            padding: 5px
+            border-top-left-radius: 5px
+            border-bottom-left-radius: 5px
+            &:focus
+                outline: none
+        &__button
+            width: 30%
+            height: 100%
+            border: none
+            border-bottom-right-radius: 5px
+            border-top-right-radius: 5px
+            background-color: base.$primary-color
+            color: #fff
+            font-weight: 600
+
+    &__title
+        font-size: 1.25em
+
+    &__list
+        width: 100%
+        height: 80%
+        overflow-x: hidden
+
+    &__item
+        width: 100%
+        height: 5em
+        margin: 5px 0
+        &__content
+            border-radius: 10px
+            border: 1px solid rgba(92,92,92,0.75)
+            padding: 0 0.5em
+            width: 100%
+            height: 100%
+            display: flex
+            justify-content: space-between
+            align-items: center
+
+        &__actions
+            width: 20%
+            display: flex
+            justify-content: space-evenly
+        &__name
+            font-size: 1em
+            font-weight: 600
+            width: 80%
+            word-wrap: break-word
+            text-decoration: none
+
+.progress
+    &__wrapper
+        width: 100%
+        height: 5em
+        background-color: base.$primary-color
+        position: relative
+    &__slide
+        width: 0
+        height: 100%
+        overflow: hidden
+        background-color: base.$secondary-color
+        display: flex
+        justify-content: center
+        align-items: center
+    &__count
+        width: 5em
+        height: 100%
+        position: absolute
+        display: flex
+        justify-content: center
+        align-items: center
+        top: 0
+        right: 0
+        &__text
+            font-weight: 800
+
+.safe
+    @include base.icon($color: #91C483)
+.danger
+    @include base.icon($color: #FF6464)
+.warning
+    @include base.icon($color: #FF6464)

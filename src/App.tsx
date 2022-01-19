@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext, useEffect } from "react";
+import "./App.sass";
+import { Board, Navbar, ProgressBar, Wrapper } from "./components";
+import { AppContext } from "./context/provider";
 
-function App() {
+interface Props {
+  
+}
+
+const App:React.FC<Props> = () => {
+  const { state, dispatch } = useContext(AppContext);
+
+  useEffect(() => {
+    dispatch({ type: "GET_BOARDS" });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Navbar title="Board note" />
+      <Wrapper>
+        {state?.board.map((item, index) => (
+          <Board key={index} item={item} />
+        ))}
+      </Wrapper>
+      <ProgressBar />
     </div>
   );
 }
