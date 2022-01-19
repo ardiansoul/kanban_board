@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Draggable } from "react-beautiful-dnd";
-import { Edit, Trash } from "react-feather";
+import { Edit, Trash, X } from "react-feather";
 import { Item } from "../../context";
 import { AppContext } from "../../context/provider";
 
@@ -51,17 +51,23 @@ const Card: React.FC<Props> = ({ boardId, item, index }) => {
                 <input
                   type="text"
                   value={value}
+                  className="board__item__input"
                   onChange={(e) => setValue(e.target.value)}
                 />
-                <div>
-                  <button
+                <div className="board__item__actions">
+
+                <Edit
+                    className="icon safe"
                     onClick={() => {
                       onEditMode(boardId, item.id);
                     }}
-                  >
-                    update
-                  </button>
-                  <button>cancel</button>
+                  />
+                <X
+                    className="icon danger"
+                    onClick={() => {
+                      setEditMode(!editMode);
+                    }}
+                  />
                 </div>
               </>
             ) : (
